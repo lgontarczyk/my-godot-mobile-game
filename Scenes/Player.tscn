@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ftqrcixns627"]
+
+[ext_resource type="Texture2D" uid="uid://dtyv4i556xhy7" path="res://Assets/Tiles/Characters/green_01.png" id="1_4a8ip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq8qt"]
+size = Vector2(36, 8)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(3, 3)
+texture = ExtResource("1_4a8ip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mq8qt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
