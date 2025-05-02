@@ -11,12 +11,29 @@ config_version=5
 [application]
 
 config/name="My Mobile Game"
-config/features=PackedStringArray("4.3", "Mobile")
+run/main_scene="res://Scenes/Game.tscn"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
 
 [dotnet]
 
 project/assembly_name="My Mobile Game"
+
+[editor]
+
+naming/scene_name_casing=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
