@@ -5,12 +5,10 @@ on: [push]
 env:
   PROJECT_NAME: MyMobileGame
   GODOT_VERSION: 4.3
-  GODOT_CHANNEL: Stable
-
-
+  GODOT_CHANNEL: stable
 
 jobs:
-  deploy:
+  build:
     if: github.ref == 'refs/heads/main'
     runs-on: macos-latest
     steps:
