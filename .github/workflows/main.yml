@@ -1,0 +1,46 @@
+name: iOS build
+
+on: [push]
+
+env:
+  PROJECT_NAME: MyMobileGame
+  GODOT_VERSION: 4.3
+  GODOT_CHANNEL: Stable
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Check is running on mac-os
+        if: runner.os != 'macos'
+        shell: bash
+        run: exit 1
+
+      - name: Cache Godot files
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            Godot.app
+             /Users/runner/Library/Application\ Support/Godot/
+          key: ${{ runner.os }}-godot-4.3-stable
+
+      - name: Download and config Godot Engine linux server and templates
+        shell: bash
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: |
+          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}/Godot_v${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}_macos.universal.zip
+          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}/Godot_v${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}_export_templates.tpz
+          unzip Godot_v${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}_macos.universal.zip
+          unzip Godot_v${{ GODOT_VERSION }}-${{ GODOT_CHANNEL }}_export_templates.tpz
+          mkdir -p ~/Library/Application\ Support/Godot/export_templates/${{ GODOT_VERSION }}.${{ GODOT_CHANNEL }}
+          mv templates/* ~/Library/Application\ Support/Godot/export_templates/${{ GODOT_VERSION }}.${{ GODOT_CHANNEL }}
+
+      - name: Godot iOS export
+        shell: bash
+        # run: ./Godot.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
+        run: ./Godot.app/Contents/MacOS/Godot --headless --path . --export-release iOS
