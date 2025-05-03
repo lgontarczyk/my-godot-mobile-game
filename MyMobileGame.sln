@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My Mobile Game", "My Mobile Game.csproj", "{2890B2BE-604E-4F16-9B0D-2E2992022819}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMobileGame", "MyMobileGame.csproj", "{2890B2BE-604E-4F16-9B0D-2E2992022819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
