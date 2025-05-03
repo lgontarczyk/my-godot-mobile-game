@@ -59,12 +59,12 @@ jobs:
           echo '--- Build ---'
           ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
           echo '--- Debug ---'
-          ls /Users/runner/Library/Application Support/Godot/mono/build_logs/
-          ls /Users/runner/Library/Application Support/Godot/mono/build_logs/*/*.txt
+          ls ~/Library/Application\ Support/Godot/mono/build_logs/
+          ls ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
 
       - name: Godot iOS export
         shell: bash
         run: |
           echo '--- Debug Logs ---'
-          ls /Users/runner/Library/Application Support/Godot/mono/build_logs/
-          ls /Users/runner/Library/Application Support/Godot/mono/build_logs/*/*.txt
+          ls ~/Library/Application\ Support/Godot/mono/build_logs/
+          ls ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
