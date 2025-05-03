@@ -45,9 +45,8 @@ jobs:
         shell: bash
         # run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
         run: |
-          echo 'Files'
-          ls .
-          echo '.Net'
+          echo '--- .Net ---'
           dotnet --list-sdks
-          ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS
+          echo '--- Build ---'
+          ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
         # run: echo 'Fake iOS Export for cache completion' 
