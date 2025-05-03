@@ -26,7 +26,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            Godot.app
+            Godot${{ env.GODOT_MONO }}.app
              /Users/runner/Library/Application\ Support/Godot/
           key: ${{ runner.os }}-godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}
 
@@ -45,7 +45,7 @@ jobs:
           #echo 'Export templates 4.3'
           #ls ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono
           echo 'App support'
-          ls ~/Library/Application\ Support
+          ls ~/Library/Application\ Support/Godot/
           
 
       - name: Godot iOS export
