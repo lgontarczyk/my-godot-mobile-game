@@ -25,7 +25,7 @@ window/handheld/orientation=1
 
 [dotnet]
 
-project/assembly_name="My Mobile Game"
+project/assembly_name="MyCoolMobileGame"
 
 [editor]
 
