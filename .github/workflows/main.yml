@@ -40,14 +40,16 @@ jobs:
           unzip Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}_export_templates.tpz
           mkdir -p ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono # TODO : Utiliser le bool. Attention, on a _mono et .mono
           mv templates/* ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono  # TODO : Utiliser le bool. Attention, on a _mono et .mono
-          echo 'Export Templates'
-          ls ~/Library/Application\ Support/Godot/export_templates/
-          echo 'Export templates 4.3'
-          ls ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono
+          #echo 'Export Templates'
+          #ls ~/Library/Application\ Support/Godot/export_templates/
+          #echo 'Export templates 4.3'
+          #ls ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono
+          echo 'App support'
+          ls ~/Library/Application\ Support
           
 
       - name: Godot iOS export
         shell: bash
-        # run: ./Godot.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
-        run: ./Godot.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
+        # run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
+        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
         # run: echo 'Fake iOS Export for cache completion' 
