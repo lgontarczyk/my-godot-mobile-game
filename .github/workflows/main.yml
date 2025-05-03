@@ -51,5 +51,5 @@ jobs:
       - name: Godot iOS export
         shell: bash
         # run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
-        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
+        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS
         # run: echo 'Fake iOS Export for cache completion' 
