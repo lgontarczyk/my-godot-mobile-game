@@ -62,9 +62,8 @@ jobs:
           ls ~/Library/Application\ Support/Godot/mono/build_logs/
           ls ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
 
-      - name: Godot iOS export
+      - name: Godot iOS Debug logs
         shell: bash
         run: |
           echo '--- Debug Logs ---'
-          ls ~/Library/Application\ Support/Godot/mono/build_logs/
-          ls ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
+          cat ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
