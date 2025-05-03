@@ -5,7 +5,8 @@ on: [push]
 env:
   PROJECT_NAME: MyMobileGame
   GODOT_VERSION: 4.3
-  GODOT_CHANNEL: stable_mono
+  GODOT_CHANNEL: stable
+  GODOT_MONO: _mono # TODO : Boolean
 
 jobs:
   build:
@@ -33,12 +34,12 @@ jobs:
         shell: bash
         if: steps.cache-godot.outputs.cache-hit != 'true'
         run: |
-          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}/Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}_macos.universal.zip
-          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}/Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}_export_templates.tpz
-          unzip Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}_macos.universal.zip
-          unzip Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}_export_templates.tpz
-          mkdir -p ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}
-          mv templates/* ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}
+          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}/Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}_macos.universal.zip
+          wget -q https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}/Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}_export_templates.tpz
+          unzip Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}_macos.universal.zip
+          unzip Godot_v${{ env.GODOT_VERSION }}-${{ env.GODOT_CHANNEL }}${{ env.GODOT_MONO }}_export_templates.tpz
+          mkdir -p ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono # TODO : Utiliser le bool. Attention, on a _mono et .mono
+          mv templates/* ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono  # TODO : Utiliser le bool. Attention, on a _mono et .mono
 
       - name: Godot iOS export
         shell: bash
