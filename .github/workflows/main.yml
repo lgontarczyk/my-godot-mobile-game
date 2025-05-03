@@ -7,6 +7,7 @@ env:
   GODOT_VERSION: 4.3
   GODOT_CHANNEL: stable
   GODOT_MONO: _mono # TODO : Boolean
+  CODE_SIGN_IDENTITY: "Apple Distribution" # besoin de cette ligne ?
 
 jobs:
   build:
