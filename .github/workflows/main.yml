@@ -46,7 +46,7 @@ jobs:
         shell: bash
         # continue-on-error: true
         # run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
-        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
+        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS
 
       #- name: Godot iOS Debug logs
       #  shell: bash
