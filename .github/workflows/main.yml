@@ -43,5 +43,5 @@ jobs:
       - name: Godot iOS export
         shell: bash
         # run: ./Godot.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
-        # run: ./Godot.app/Contents/MacOS/Godot --headless --path . --export-release iOS
-        run: echo 'Fake iOS Export for cache completion' 
+        run: ./Godot.app/Contents/MacOS/Godot --headless --path . --export-release iOS
+        # run: echo 'Fake iOS Export for cache completion' 
