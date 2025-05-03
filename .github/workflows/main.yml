@@ -42,28 +42,14 @@ jobs:
           mkdir -p ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono # TODO : Utiliser le bool. Attention, on a _mono et .mono
           mv templates/* ~/Library/Application\ Support/Godot/export_templates/${{ env.GODOT_VERSION }}.${{ env.GODOT_CHANNEL }}.mono  # TODO : Utiliser le bool. Attention, on a _mono et .mono
 
-      #- name: Install coreutils for gtimeout
-       # shell: bash
-        #run: brew install coreutils
-
-      #- name: Open project once to import assets
-       # shell: bash
-       # continue-on-error: true # timeout will exit with code 124
-       # run: gtimeout 60 ./Godot_mono.app/Contents/MacOS/Godot --headless --path . -e
-
       - name: Godot iOS export
         shell: bash
-        continue-on-error: true
+        # continue-on-error: true
         # run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path ${{ inputs.working-directory }} --export-release iOS
-        run: |
-          echo '--- Build ---'
-          ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
-          echo '--- Debug ---'
-          ls ~/Library/Application\ Support/Godot/mono/build_logs/
-          ls ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
+        run: ./Godot${{ env.GODOT_MONO }}.app/Contents/MacOS/Godot --headless --path . --export-release iOS -v
 
-      - name: Godot iOS Debug logs
-        shell: bash
-        run: |
-          echo '--- Debug Logs ---'
-          cat ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
+      #- name: Godot iOS Debug logs
+      #  shell: bash
+      #  run: |
+      #    echo '--- Debug Logs ---'
+      #    cat ~/Library/Application\ Support/Godot/mono/build_logs/*/*.txt
