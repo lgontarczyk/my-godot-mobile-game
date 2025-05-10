@@ -1,19 +1,68 @@
-[gd_scene load_steps=3 format=3 uid="uid://ftqrcixns627"]
+[gd_scene load_steps=7 format=3 uid="uid://ftqrcixns627"]
 
-[ext_resource type="Texture2D" uid="uid://dtyv4i556xhy7" path="res://Assets/Tiles/Characters/green_01.png" id="1_4a8ip"]
+[ext_resource type="Texture2D" uid="uid://nc6r41qhwhdi" path="res://Assets/Tileset/marlo.png" id="1_rpqav"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq8qt"]
-size = Vector2(36, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
+radius = 20.0
+height = 78.0
+
+[sub_resource type="Animation" id="Animation_gntrk"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_dewec"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_5ixxa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
+_data = {
+&"RESET": SubResource("Animation_5ixxa"),
+&"idle": SubResource("Animation_gntrk"),
+&"run": SubResource("Animation_dewec")
+}
 
 [node name="Player" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -36)
+position = Vector2(0, -48)
 scale = Vector2(3, 3)
-texture = ExtResource("1_4a8ip")
+texture = ExtResource("1_rpqav")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_mq8qt")
+position = Vector2(0, -39)
+shape = SubResource("CapsuleShape2D_kyqiw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nn08x")
+}
+autoplay = "idle"
