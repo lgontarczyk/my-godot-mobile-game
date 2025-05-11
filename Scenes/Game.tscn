@@ -9,7 +9,7 @@ script = ExtResource("1_fmqcd")
 
 [node name="Player" parent="." instance=ExtResource("2_x6f6n")]
 texture_filter = 1
-position = Vector2(286, 235)
+position = Vector2(618, 103)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
