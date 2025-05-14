@@ -5,23 +5,23 @@ namespace MyMobileGame.States;
 
 public partial class PlayerIdleState : PlayerState
 {
+    [Export] private float _deceleration = 8;
+    
     public override void Init()
     {
     }
 
     public override void Enter()
     {
-        GD.Print("Entered idle state");
         Player.AnimationPlayer.Play("idle");
-        Direction = Direction with
-        {
-            X = 1
-        };
+        // Direction = Direction with
+        // {
+        //     X = 1
+        // };
     }
 
     public override void Exit()
     {
-        GD.Print("Exited idle state");
     }
 
     public override PlayerState HandleInput(InputEvent @event)
@@ -31,6 +31,8 @@ public partial class PlayerIdleState : PlayerState
 
     public override PlayerState PlayerState_PhysicsProcess(double delta)
     {
+        Player.UpdateVelocity(0, _deceleration);
+        
         if (!Player.IsOnFloor())
             return FallState;
         
@@ -42,6 +44,11 @@ public partial class PlayerIdleState : PlayerState
 
     public override PlayerState PlayerState_Process(double delta)
     {
+        if (Direction.X != 0)
+        {
+            return RunState;
+        }
+        
         return null;
     }
 }

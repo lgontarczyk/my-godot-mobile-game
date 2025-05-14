@@ -23,6 +23,10 @@ public partial class PlayerStateMachine : Node2D
 
     public override void _Process(double delta)
     {
+        PlayerState.Direction = new (
+            float.Sign(Input.GetAxis("move_left", "move_right")),
+            float.Sign(Input.GetAxis("move_up", "move_down"))
+            );
         var newState = CurrentState.PlayerState_Process(delta);
         ChangeState(newState);
     }

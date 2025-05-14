@@ -11,13 +11,11 @@ public partial class PlayerFallState : PlayerState
 
     public override void Enter()
     {
-        GD.Print("Entered Fall state");
         Player.AnimationPlayer.Play("fall");
     }
 
     public override void Exit()
     {
-        GD.Print("Exited Fall state");
     }
 
     public override PlayerState HandleInput(InputEvent @event)

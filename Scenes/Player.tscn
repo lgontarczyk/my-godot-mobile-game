@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ftqrcixns627"]
+[gd_scene load_steps=19 format=3 uid="uid://ftqrcixns627"]
 
 [ext_resource type="Script" uid="uid://fox58x6ie4jj" path="res://Scenes/Player.cs" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://nc6r41qhwhdi" path="res://Assets/Tileset/marlo.png" id="1_rpqav"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cryb4t6a7s66x" path="res://States/PlayerIdleState.cs" id="4_nn08x"]
 [ext_resource type="Script" uid="uid://bnls2smywgmpo" path="res://States/PlayerRunState.cs" id="5_52ee3"]
 [ext_resource type="Script" uid="uid://cqy8v0c3jxkjm" path="res://States/PlayerJumpState.cs" id="6_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://jexg0kopg303" path="res://Assets/Audio/skid.wav" id="6_megsn"]
 [ext_resource type="Script" uid="uid://52trucbe68gw" path="res://States/PlayerFallState.cs" id="7_bhhdu"]
 [ext_resource type="Script" uid="uid://brhtwaxnkqv4a" path="res://States/PlayerCrouchState.cs" id="8_megsn"]
 
@@ -166,6 +167,7 @@ script = ExtResource("4_nn08x")
 [node name="Run" type="Node2D" parent="PlayerStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("5_52ee3")
+_skidAudio = ExtResource("6_megsn")
 
 [node name="Jump" type="Node2D" parent="PlayerStateMachine"]
 unique_name_in_owner = true
